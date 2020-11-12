@@ -17,7 +17,7 @@ import java.util.List;
 public class ILoveMommy {
 
   public String transform(String input) {
-    if (input == null || input.length() == 0) {
+    if (input == null || input.isEmpty()) {
       return input;
     }
 
