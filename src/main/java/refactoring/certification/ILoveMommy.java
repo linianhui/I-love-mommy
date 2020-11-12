@@ -1,7 +1,6 @@
 package refactoring.certification;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -21,25 +20,18 @@ public class ILoveMommy {
       'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'
   );
 
-  public String transform(String input) {
+  public String transform(
+      final String input
+  ) {
     if (input == null || input.isEmpty()) {
       return input;
     }
 
-    Boolean consecutive = false;
+    final Set<Integer> vowelIndexSet = getVowelIndexSet(input);
+
     StringBuffer inputAsBuffer = new StringBuffer(input);
-    List<String> allVowels = new ArrayList();
-    for (int i1 = 0; i1 < input.length(); i1++) {
-      char character1 = input.charAt(i1);
-      boolean result1 = false;
-      if (VOWEL_SET.contains(character1)) {
-        result1 = true;
-      }
-      if (result1) {
-        allVowels.add(String.valueOf(character1));
-      }
-    }
-    if ((allVowels.size() >= 0.3 * input.length())) {
+    Boolean consecutive = false;
+    if ((vowelIndexSet.size() >= 0.3 * input.length())) {
       for (int i = 0; i < inputAsBuffer.length(); i++) {
         char character = inputAsBuffer.charAt(i);
         boolean result = false;
@@ -62,6 +54,18 @@ public class ILoveMommy {
     }
     return inputAsBuffer.toString();
 
+  }
+
+  private Set<Integer> getVowelIndexSet(
+      final String input
+  ) {
+    final Set<Integer> vowelIndexSet = new HashSet<>(input.length());
+    for (int i = 0; i < input.length(); i++) {
+      if (VOWEL_SET.contains(input.charAt(i))) {
+        vowelIndexSet.add(i);
+      }
+    }
+    return vowelIndexSet;
   }
 
 }
