@@ -28,12 +28,11 @@ public class ILoveMommy {
     }
 
     final Set<Integer> vowelIndexSet = getVowelIndexSet(input);
-
-    if (requiredTransform(input, vowelIndexSet)) {
-      return transform(input, "mommy", vowelIndexSet);
+    if (notRequireTransform(input, vowelIndexSet)) {
+      return input;
     }
 
-    return input;
+    return transform(input, "mommy", vowelIndexSet);
   }
 
   private String transform(
@@ -57,7 +56,14 @@ public class ILoveMommy {
     return output.toString();
   }
 
-  private boolean requiredTransform(
+  private boolean notRequireTransform(
+      final String input,
+      final Set<Integer> vowelIndexSet
+  ) {
+    return requireTransform(input, vowelIndexSet) == false;
+  }
+
+  private boolean requireTransform(
       final String input,
       final Set<Integer> vowelIndexSet
   ) {
