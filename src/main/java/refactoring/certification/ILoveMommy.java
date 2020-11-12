@@ -16,7 +16,7 @@ import java.util.Set;
  */
 public class ILoveMommy {
 
-  private static final Set<Character> VOWEL_SET = Set.of(
+  private static final Set<Character> VOWEL_CHAR_SET = Set.of(
       'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'
   );
 
@@ -26,57 +26,57 @@ public class ILoveMommy {
     if (input == null || input.isEmpty()) {
       return input;
     }
-
-    final Set<Integer> vowelIndexSet = getVowelIndexSet(input, VOWEL_SET);
-    if (notRequireTransform(input, vowelIndexSet)) {
+    final char[] chars = input.toCharArray();
+    final Set<Integer> vowelIndexSet = getVowelIndexSet(chars, VOWEL_CHAR_SET);
+    if (notRequireTransform(chars, vowelIndexSet)) {
       return input;
     }
 
-    return transform(input, "mommy", vowelIndexSet);
+    return transform(chars, "mommy", vowelIndexSet);
   }
 
   private String transform(
-      final String input,
+      final char[] chars,
       final String newString,
       final Set<Integer> vowelIndexSet
   ) {
     final StringBuilder output = new StringBuilder(
-        input.length() + newString.length() * vowelIndexSet.size()
+        chars.length + newString.length() * vowelIndexSet.size()
     );
 
-    for (int i = 0; i < input.length(); i++) {
+    for (int i = 0; i < chars.length; i++) {
       if (vowelIndexSet.contains(i)) {
         if (!vowelIndexSet.contains(i - 1)) {
           output.append(newString);
         }
         continue;
       }
-      output.append(input.charAt(i));
+      output.append(chars[i]);
     }
     return output.toString();
   }
 
   private boolean notRequireTransform(
-      final String input,
+      final char[] chars,
       final Set<Integer> vowelIndexSet
   ) {
-    return !requireTransform(input, vowelIndexSet);
+    return !requireTransform(chars, vowelIndexSet);
   }
 
   private boolean requireTransform(
-      final String input,
+      final char[] chars,
       final Set<Integer> vowelIndexSet
   ) {
-    return vowelIndexSet.size() >= input.length() * 0.3;
+    return vowelIndexSet.size() >= chars.length * 0.3;
   }
 
   private Set<Integer> getVowelIndexSet(
-      final String input,
-      final Set<Character> vowelSet
+      final char[] chars,
+      final Set<Character> vowelChars
   ) {
-    final Set<Integer> vowelIndexSet = new HashSet<>(input.length());
-    for (int i = 0; i < input.length(); i++) {
-      if (vowelSet.contains(input.charAt(i))) {
+    final Set<Integer> vowelIndexSet = new HashSet<>(chars.length);
+    for (int i = 0; i < chars.length; i++) {
+      if (vowelChars.contains(chars[i])) {
         vowelIndexSet.add(i);
       }
     }
