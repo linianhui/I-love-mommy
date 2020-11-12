@@ -20,7 +20,7 @@
         <sonar.java.checkstyle.reportPaths>./target/checkstyle-result.xml</sonar.java.checkstyle.reportPaths>
         <sonar.java.spotbugs.reportPaths>./target/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
 
-        <sonar.projectKey>refactoring-certification-lnh</sonar.projectKey>
+        <sonar.projectKey>linianhui_I-love-mommy</sonar.projectKey>
         <sonar.organization>linianhui</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.branch.name>main</sonar.branch.name>
