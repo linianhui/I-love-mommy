@@ -27,7 +27,7 @@ public class ILoveMommy {
       return input;
     }
 
-    final Set<Integer> vowelIndexSet = getVowelIndexSet(input);
+    final Set<Integer> vowelIndexSet = getVowelIndexSet(input, VOWEL_SET);
     if (notRequireTransform(input, vowelIndexSet)) {
       return input;
     }
@@ -71,11 +71,12 @@ public class ILoveMommy {
   }
 
   private Set<Integer> getVowelIndexSet(
-      final String input
+      final String input,
+      final Set<Character> vowelSet
   ) {
     final Set<Integer> vowelIndexSet = new HashSet<>(input.length());
     for (int i = 0; i < input.length(); i++) {
-      if (VOWEL_SET.contains(input.charAt(i))) {
+      if (vowelSet.contains(input.charAt(i))) {
         vowelIndexSet.add(i);
       }
     }
