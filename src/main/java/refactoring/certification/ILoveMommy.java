@@ -30,7 +30,7 @@ public class ILoveMommy {
     final Set<Integer> vowelIndexSet = getVowelIndexSet(input);
 
     if (requiredTransform(input, vowelIndexSet)) {
-      return transform(input, "mommy");
+      return transform(input, "mommy", vowelIndexSet);
     }
 
     return input;
@@ -38,30 +38,23 @@ public class ILoveMommy {
 
   private String transform(
       final String input,
-      final String newString
+      final String newString,
+      final Set<Integer> vowelIndexSet
   ) {
-    StringBuffer inputAsBuffer = new StringBuffer(input);
-    Boolean consecutive = false;
-    for (int i = 0; i < inputAsBuffer.length(); i++) {
-      char character = inputAsBuffer.charAt(i);
-      boolean result = false;
-      if (VOWEL_SET.contains(character)) {
-        result = true;
-      }
-      if (result) {
-        inputAsBuffer.deleteCharAt(i);
-        if (!consecutive) {
-          inputAsBuffer.insert(i, newString);
-          i = i + newString.length() - 1;
-          consecutive = true;
-          continue;
+    final StringBuffer output = new StringBuffer(
+        input.length() + newString.length() * vowelIndexSet.size()
+    );
+
+    for (int i = 0; i < input.length(); i++) {
+      if (vowelIndexSet.contains(i)) {
+        if (!vowelIndexSet.contains(i - 1)) {
+          output.append(newString);
         }
-        consecutive = false;
-      } else {
-        consecutive = false;
+        continue;
       }
+      output.append(input.charAt(i));
     }
-    return inputAsBuffer.toString();
+    return output.toString();
   }
 
   private boolean requiredTransform(
