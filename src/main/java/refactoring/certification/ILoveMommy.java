@@ -41,7 +41,7 @@ public class ILoveMommy {
       final String newString,
       final Set<Integer> vowelIndexSet
   ) {
-    final StringBuffer output = new StringBuffer(
+    final StringBuilder output = new StringBuilder(
         input.length() + newString.length() * vowelIndexSet.size()
     );
 
