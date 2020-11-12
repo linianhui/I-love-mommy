@@ -60,7 +60,7 @@ public class ILoveMommy {
       final String input,
       final Set<Integer> vowelIndexSet
   ) {
-    return requireTransform(input, vowelIndexSet) == false;
+    return !requireTransform(input, vowelIndexSet);
   }
 
   private boolean requireTransform(
