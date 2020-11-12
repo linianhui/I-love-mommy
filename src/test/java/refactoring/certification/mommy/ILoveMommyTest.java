@@ -17,6 +17,7 @@ public class ILoveMommyTest {
     public static Collection<Object[]> parameters() {
         Object[][] data = new Object[][] {
                 {null, null},
+                {"", ""},
                 {"b", "b"},
                 {"a", "mommy"},
                 {"ab", "mommyb"},
