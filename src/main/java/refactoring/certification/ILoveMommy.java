@@ -28,10 +28,9 @@ public class ILoveMommy {
     }
 
     final Set<Integer> vowelIndexSet = getVowelIndexSet(input);
-
     StringBuffer inputAsBuffer = new StringBuffer(input);
-    Boolean consecutive = false;
-    if ((vowelIndexSet.size() >= 0.3 * input.length())) {
+    if (requiredTransform(input, vowelIndexSet)) {
+      Boolean consecutive = false;
       for (int i = 0; i < inputAsBuffer.length(); i++) {
         char character = inputAsBuffer.charAt(i);
         boolean result = false;
@@ -53,7 +52,13 @@ public class ILoveMommy {
       }
     }
     return inputAsBuffer.toString();
+  }
 
+  private boolean requiredTransform(
+      final String input,
+      final Set<Integer> vowelIndexSet
+  ) {
+    return vowelIndexSet.size() >= input.length() * 0.3;
   }
 
   private Set<Integer> getVowelIndexSet(
