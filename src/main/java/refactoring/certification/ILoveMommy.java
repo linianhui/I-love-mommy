@@ -2,6 +2,7 @@ package refactoring.certification;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 给定一个不定长的字符串，如果其元音(aeiou)的数量占比超过30%，那么将每个连续的元音集合替换成"mommy". 例如：
@@ -16,6 +17,10 @@ import java.util.List;
  */
 public class ILoveMommy {
 
+  private static final Set<Character> VOWEL_SET = Set.of(
+      'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'
+  );
+
   public String transform(String input) {
     if (input == null || input.isEmpty()) {
       return input;
@@ -27,7 +32,7 @@ public class ILoveMommy {
     for (int i1 = 0; i1 < input.length(); i1++) {
       char character1 = input.charAt(i1);
       boolean result1 = false;
-      if ("aieou".contains(String.valueOf(character1))) {
+      if (VOWEL_SET.contains(character1)) {
         result1 = true;
       }
       if (result1) {
@@ -38,7 +43,7 @@ public class ILoveMommy {
       for (int i = 0; i < inputAsBuffer.length(); i++) {
         char character = inputAsBuffer.charAt(i);
         boolean result = false;
-        if ("aieou".contains(String.valueOf(character))) {
+        if (VOWEL_SET.contains(character)) {
           result = true;
         }
         if (result) {
