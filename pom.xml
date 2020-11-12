@@ -8,7 +8,7 @@
     <artifactId>java-certification-level-1</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>YOUR-NAME Refactoring Certification Project for Java</name>
+    <name>lnh Refactoring Certification Project for Java</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,7 +20,7 @@
         <sonar.java.checkstyle.reportPaths>./target/checkstyle-result.xml</sonar.java.checkstyle.reportPaths>
         <sonar.java.spotbugs.reportPaths>./target/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
 
-        <sonar.projectKey>refactoring-certification-YOUR-NAME</sonar.projectKey>
+        <sonar.projectKey>refactoring-certification-lnh</sonar.projectKey>
         <sonar.organization>meixuesong</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.scanner.force-deprecated-java-version>true</sonar.scanner.force-deprecated-java-version>
